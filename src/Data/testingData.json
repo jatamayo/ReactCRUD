@@ -1,0 +1,19 @@
+{
+    "testingData": [
+        {
+            "Name": "jose alejandro tamayo", 
+            "Age": 27, 
+            "Sex": "M"
+        },
+        {    
+            "Name": "Gloria soraida villaran", 
+            "Age": 26, 
+            "Sex": "F"
+        },
+        {    
+            "Name": "Karem tamayo archila", 
+            "Age": 50, 
+            "Sex": "F"
+        }
+    ]
+}
