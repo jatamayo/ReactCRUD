@@ -1,9 +1,10 @@
 // Imports React
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 // Import Components
-import Navigation from './components/Navigation/Navigation'
-import {testingData} from './Data/testingData.json'
+import Navigation from './components/Navigation/Navigation.js'
+import FormBadge from './components/FormBadge/FormBadge.js'
+import { testingData } from './Data/testingData.json'
 
 // Import Images
 import logo from './logo.svg';
@@ -21,6 +22,23 @@ class App extends Component{
     this.state={
       testingData
     }
+    this.handleAddTasks = this.handleAddTasks.bind(this)
+    this.handleRemoveTask = this.handleRemoveTask.bind(this)
+  }
+
+  handleAddTasks(task){
+    this.setState({
+      testingData: [...this.state.testingData, task]
+    })
+  }
+
+  handleRemoveTask(index){
+    console.log(index)
+    this.setState({
+      testingData: this.state.testingData.filter((e,i)=>{
+        return i !== index
+      })
+    })
   }
 
   render(){
@@ -35,6 +53,11 @@ class App extends Component{
             <div className="card-body">
               {data.Age}
             </div>
+            <div className="card-fooder">
+              <button className="btn btn-danger" onClick={ this.handleRemoveTask.bind(this, index) }>
+                Delete
+              </button>
+            </div>
           </div>
         </div>
       )
@@ -44,11 +67,17 @@ class App extends Component{
       <div className="App">
         <Navigation title="navBar Title"/>
 
-          <div className="container">
-            <div className="row">
-              {tasks}
-            </div>
+        <div className="container">
+          <div className="row">
+            <FormBadge onAddTask={ this.handleAddTasks }/>
           </div>
+        </div>
+
+        <div className="container">
+          <div className="row">
+            {tasks}
+          </div>
+        </div>
 
         <img src={logo} className="App-logo" alt="logo" />
         <p>{this.state.title}</p>
